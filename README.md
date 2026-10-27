@@ -6,7 +6,7 @@
 
 ## 构建和运行
 
-需要 **macOS 13 或更新版本**，以及包含 Swift 6 的 Xcode / Command Line Tools。
+运行需要 **macOS 13 或更新版本**；构建需要 **Xcode 16.3 / Command Line Tools 16.3 或更新版本**（Swift 6 和 macOS 15.4+ SDK）。CI 使用 Xcode 16.4，构建产物的最低系统版本仍为 macOS 13。
 
 ```bash
 ./scripts/build.sh
@@ -83,7 +83,7 @@ GitHub Actions 会先运行测试，再构建 Apple Silicon / Intel 通用应用
 - `appcast.xml`：带签名的 Sparkle 更新清单，指向该 tag 下的安装包。
 - `SHA256SUMS`：附件校验值。
 
-应用使用 `https://github.com/lljxww/ClipBar/releases/latest/download/appcast.xml` 作为更新源。当前发布仅支持 `v1.2.3` 这样的稳定版本；不接受预发布、版本元数据或前导零。发布较旧版本时，请在 GitHub 上确认 Latest 仍指向希望推送给用户的版本。自动更新从包含此功能的版本开始生效，旧的 1.0.0 需要手动安装一次。
+应用使用 `https://github.com/lljxww/ClipBar/releases/latest/download/appcast.xml` 作为更新源。当前发布仅支持 `v1.2.3` 这样的稳定版本；不接受预发布、版本元数据或前导零。发布工作流通过 GitHub 的语义版本策略维护 Latest，补发旧版本时也会保留较新版本的更新入口。自动更新从包含此功能的版本开始生效，旧的 1.0.0 需要手动安装一次。
 
 维护者在 Settings → Secrets and variables → Actions 配置两项 secret：
 

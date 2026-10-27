@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Inject and validate version/update metadata before signing the app bundle."""
 
+from __future__ import annotations
+
 import argparse
 import base64
 import binascii

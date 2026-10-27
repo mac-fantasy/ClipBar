@@ -56,4 +56,7 @@ jobs:
             dist/release/appcast.xml \
             dist/release/SHA256SUMS \
             --repo "$GITHUB_REPOSITORY" \
-            --verify-tag --generate-notes --title "ClipBar ${CLIPBAR_VERSION}"
+            --verify-tag --generate-notes --latest=false --title "ClipBar ${CLIPBAR_VERSION}"
+          release_id="$(gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${RELEASE_TAG}" --jq .id)"
+          gh api --method PATCH "repos/${GITHUB_REPOSITORY}/releases/${release_id}" \
+            -f make_latest=legacy --silent
