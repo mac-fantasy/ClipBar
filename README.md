@@ -2,7 +2,26 @@
 
 原生 macOS 菜单栏剪贴板历史工具。使用 Swift 6、AppKit、SwiftUI 和系统 ImageIO，通过 [Sparkle](https://sparkle-project.org/) 从 GitHub Releases 自动更新。采用 [MIT 许可证](LICENSE) 开源。
 
-从 [最新 Release](https://github.com/lljxww/ClipBar/releases/latest) 下载通用版压缩包，解压后将 `ClipBar.app` 拖入「应用程序」目录。
+## 安装
+
+通过项目维护的 [Homebrew tap](https://github.com/lljxww/homebrew-clipbar) 安装：
+
+```bash
+brew install --cask lljxww/clipbar/clipbar
+```
+
+也可以从 [最新 Release](https://github.com/lljxww/ClipBar/releases/latest) 下载通用版压缩包，解压后将 `ClipBar.app` 拖入「应用程序」目录。两种方式均支持 Apple Silicon 和 Intel，运行需要 macOS 13 或更新版本。
+
+当前发行版使用 ad-hoc 签名，尚未做 Apple Developer ID 签名和公证；macOS 可能阻止首次打开。请确认安装来源后，在「系统设置 → 隐私与安全性」中按系统提示允许打开。若已手动安装，请先退出应用，并将已有的 `/Applications/ClipBar.app` 移到其他位置后再使用 Homebrew 安装，剪贴板历史保存在用户资料库中。
+
+应用内置自动更新。若要通过 Homebrew 手动更新，由于 Cask 标记了 `auto_updates true`，需要使用：
+
+```bash
+brew update
+brew upgrade --cask --greedy lljxww/clipbar/clipbar
+```
+
+tap 每 6 小时检查并同步最新稳定版 Release 的版本号和 SHA-256；维护者也可以在 tap 仓库的 Actions 中手动运行 **Update Cask** 立即同步。
 
 ## 构建和运行
 
