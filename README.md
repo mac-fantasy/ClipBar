@@ -4,13 +4,13 @@
 
 ## 安装
 
-通过项目维护者的 [统一 Homebrew tap](https://github.com/lljxww/homebrew-tap) 安装：
+通过项目维护者的 [统一 Homebrew tap](https://github.com/mac-fantasy/homebrew-tap) 安装：
 
 ```bash
-brew install --cask lljxww/tap/clipbar
+brew install --cask mac-fantasy/tap/clipbar
 ```
 
-也可以从 [最新 Release](https://github.com/lljxww/ClipBar/releases/latest) 下载通用版压缩包，解压后将 `ClipBar.app` 拖入「应用程序」目录。两种方式均支持 Apple Silicon 和 Intel，运行需要 macOS 13 或更新版本。
+也可以从 [最新 Release](https://github.com/mac-fantasy/ClipBar/releases/latest) 下载通用版压缩包，解压后将 `ClipBar.app` 拖入「应用程序」目录。两种方式均支持 Apple Silicon 和 Intel，运行需要 macOS 13 或更新版本。
 
 当前发行版使用 ad-hoc 签名，尚未做 Apple Developer ID 签名和公证；macOS 可能阻止首次打开。请确认安装来源后，在「系统设置 → 隐私与安全性」中按系统提示允许打开。若已手动安装，请先退出应用，并将已有的 `/Applications/ClipBar.app` 移到其他位置后再使用 Homebrew 安装，剪贴板历史保存在用户资料库中。
 
@@ -18,21 +18,20 @@ brew install --cask lljxww/tap/clipbar
 
 ```bash
 brew update
-brew upgrade --cask --greedy lljxww/tap/clipbar
+brew upgrade --cask --greedy mac-fantasy/tap/clipbar
 ```
 
 统一 tap 每 6 小时检查并同步各应用最新稳定版 Release 的版本号和 SHA-256；维护者也可以在 tap 仓库的 Actions 中手动运行 **Update Casks** 立即同步。
 
-如果此前通过旧 tap `lljxww/clipbar/clipbar` 安装，可切换到统一 tap：
+仓库与统一 tap 已迁入 `mac-fantasy`。如果此前通过 `lljxww/tap/clipbar` 或更早的 `lljxww/clipbar/clipbar` 安装，可切换到组织的统一 tap：
 
 ```bash
 brew update
-brew tap lljxww/tap
-brew reinstall --cask lljxww/tap/clipbar
-brew untap lljxww/clipbar
+brew tap mac-fantasy/tap
+brew reinstall --cask mac-fantasy/tap/clipbar
 ```
 
-重新安装会退出应用并更新安装来源，保留剪贴板历史和设置。旧 tap 保留迁移映射与说明；新版 Homebrew 对新的安装源需要独立信任，遇到迁移提示时请使用以上命令。
+重新安装会退出应用并更新安装来源，保留剪贴板历史和设置。完成后可移除本机仍存在的旧 tap：`brew untap lljxww/tap`、`brew untap lljxww/clipbar`。如果旧 tap 的 GitHub 重定向导致 Homebrew 报名称冲突，可先用 `brew untap --force lljxww/tap` 移除旧安装源，再执行以上切换命令；该命令不卸载应用或清理历史。新版 Homebrew 对新的安装源需要独立信任。
 
 ## 构建和运行
 
@@ -113,7 +112,7 @@ GitHub Actions 会先运行测试，再构建 Apple Silicon / Intel 通用应用
 - `appcast.xml`：带签名的 Sparkle 更新清单，指向该 tag 下的安装包。
 - `SHA256SUMS`：附件校验值。
 
-应用使用 `https://github.com/lljxww/ClipBar/releases/latest/download/appcast.xml` 作为更新源。当前发布仅支持 `v1.2.3` 这样的稳定版本；不接受预发布、版本元数据或前导零。发布工作流通过 GitHub 的语义版本策略维护 Latest，补发旧版本时也会保留较新版本的更新入口。自动更新从包含此功能的版本开始生效，旧的 1.0.0 需要手动安装一次。
+应用使用 `https://github.com/mac-fantasy/ClipBar/releases/latest/download/appcast.xml` 作为更新源。当前发布仅支持 `v1.2.3` 这样的稳定版本；不接受预发布、版本元数据或前导零。发布工作流通过 GitHub 的语义版本策略维护 Latest，补发旧版本时也会保留较新版本的更新入口。自动更新从包含此功能的版本开始生效，旧的 1.0.0 需要手动安装一次。
 
 维护者在 Settings → Secrets and variables → Actions 配置两项 secret：
 

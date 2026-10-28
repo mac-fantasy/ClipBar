@@ -5,7 +5,7 @@ import Testing
 
 @Test func releaseBuildAcceptsGitHubFeedWithEd25519Key() {
     let info: [String: Any] = [
-        "SUFeedURL": "https://github.com/lljxww/ClipBar/releases/latest/download/appcast.xml",
+        "SUFeedURL": "https://github.com/mac-fantasy/ClipBar/releases/latest/download/appcast.xml",
         "SUPublicEDKey": Data(repeating: 1, count: 32).base64EncodedString(),
     ]
     #expect(UpdateConfiguration(info: info)?.feedURL.host == "github.com")
