@@ -4,10 +4,10 @@
 
 ## 安装
 
-通过项目维护的 [Homebrew tap](https://github.com/lljxww/homebrew-clipbar) 安装：
+通过项目维护者的 [统一 Homebrew tap](https://github.com/lljxww/homebrew-tap) 安装：
 
 ```bash
-brew install --cask lljxww/clipbar/clipbar
+brew install --cask lljxww/tap/clipbar
 ```
 
 也可以从 [最新 Release](https://github.com/lljxww/ClipBar/releases/latest) 下载通用版压缩包，解压后将 `ClipBar.app` 拖入「应用程序」目录。两种方式均支持 Apple Silicon 和 Intel，运行需要 macOS 13 或更新版本。
@@ -18,10 +18,21 @@ brew install --cask lljxww/clipbar/clipbar
 
 ```bash
 brew update
-brew upgrade --cask --greedy lljxww/clipbar/clipbar
+brew upgrade --cask --greedy lljxww/tap/clipbar
 ```
 
-tap 每 6 小时检查并同步最新稳定版 Release 的版本号和 SHA-256；维护者也可以在 tap 仓库的 Actions 中手动运行 **Update Cask** 立即同步。
+统一 tap 每 6 小时检查并同步各应用最新稳定版 Release 的版本号和 SHA-256；维护者也可以在 tap 仓库的 Actions 中手动运行 **Update Casks** 立即同步。
+
+如果此前通过旧 tap `lljxww/clipbar/clipbar` 安装，可切换到统一 tap：
+
+```bash
+brew update
+brew tap lljxww/tap
+brew reinstall --cask lljxww/tap/clipbar
+brew untap lljxww/clipbar
+```
+
+重新安装会退出应用并更新安装来源，保留剪贴板历史和设置。旧 tap 保留迁移映射与说明；新版 Homebrew 对新的安装源需要独立信任，遇到迁移提示时请使用以上命令。
 
 ## 构建和运行
 
